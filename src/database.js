@@ -1,17 +1,18 @@
-import mongoose from 'mongoose';
-// Conexion de la base de datos atlas
-const { DBUSER, DBPASSWORD, DBNAME } = process.env;
-const MONGOOSE_URI = `mongodb+srv://${DBUSER}:${DBPASSWORD}@cluster0.sqjgg9c.mongodb.net/${DBNAME}`;
-const connection = async () => {
+import mongoose from 'mongoose'
+
+    // Si defino 5 campos, 5 campos se tienen que guardar en la base de datos
+mongoose.set('strictQuery', true)
+const connection = async()=>{
     try {
-        await mongoose.connect(MONGOOSE_URI, {
-            useUnifiedTopology: true,
-            useNewUrlParser: true
-        });
-        console.log("LA BASE ESTA CONECTADA!");
+        const {connection} = await mongoose.connect(process.env.MONGODB_URI,{
+            useUnifiedTopology:true,
+            useNewUrlParser:true,
+        })
+        console.log(`Database is connected on ${connection.host} - ${connection.port}`)
     } catch (error) {
         console.log(error);
     }
-};
+}
 
-export default connection;
+//Exportar la cadena de conexión
+export default  connection
