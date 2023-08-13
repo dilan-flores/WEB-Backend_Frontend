@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
